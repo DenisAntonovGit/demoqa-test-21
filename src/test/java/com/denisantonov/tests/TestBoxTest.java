@@ -1,4 +1,4 @@
-package tests;
+package com.denisantonov.tests;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,7 +13,6 @@ public class TestBoxTest {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -28,9 +27,10 @@ public class TestBoxTest {
         $("#submit").scrollTo();
         $("#submit").click();
 
-        $("#output").shouldHave(text("Antonov Denis"));
-        $("#output").shouldHave(text("example@email.com"));
-        $("#output").shouldHave(text("Georgia, Tbilisi"));
-        $("#output").shouldHave(text("Georgia, Tbilisi"));
+        $("#output").shouldHave(
+                text("Antonov Denis"),
+                text("example@email.com"),
+                text("Georgia, Tbilisi"),
+                text("Georgia, Tbilisi"));
     }
 }
