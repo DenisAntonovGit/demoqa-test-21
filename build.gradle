@@ -2,13 +2,22 @@ plugins {
     id 'java-library'
 }
 
+sourceSets.all {
+    configurations.getByName(runtimeClasspathConfigurationName) {
+        attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
+    }
+    configurations.getByName(compileClasspathConfigurationName) {
+        attributes.attribute(Attribute.of("org.gradle.jvm.environment", String), "standard-jvm")
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:6.12.4",
+            "com.codeborne:selenide:6.17.0",
             "org.junit.jupiter:junit-jupiter:5.9.0",
             "org.slf4j:slf4j-api:2.0.7",
             "org.slf4j:slf4j-simple:2.0.7"
